@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesona SumateraIsland</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="src/warning.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Warna teks navbar */
+    .navbar-text {
+      color: #1a202c; /* Hitam */
+      transition: color 0.3s ease;
+    }
+
+    .navbar-text.scrolled {
+      color: #ffffff; /* Putih */
+    }
+
+    /* Warna hamburger menu */
+    .hamburger-icon {
+      stroke: #1a202c; /* Hitam */
+      transition: stroke 0.3s ease;
+    }
+
+    .hamburger-icon.scrolled {
+      stroke: #ffffff; /* Putih */
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+
+
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed w-full top-0 z-10 p-5 transition-all duration-300 ease-in-out bg-white shadow-lg">
+    <div class="container mx-auto flex items-center justify-between">
+      <a href="">
+        <h1 class="text-2xl md:text-3xl font-bold navbar-text">SumateraIsland ID</h1>
+      </a>
+      <!-- Menu Desktop -->
+      <div class="hidden md:flex md:space-x-10">
+        <a href="#about" class="navbar-text hover:text-gray-500 transition duration-200">About Us</a>
+        <a href="#testimonials" class="navbar-text hover:text-gray-500 transition duration-200">Testimonials</a>
+        <a href="#faq" class="navbar-text hover:text-gray-500 transition duration-200">FAQ</a>
+        <a href="#gallery" class="navbar-text hover:text-gray-500 transition duration-200">Gallery</a>
+        <a href="#blog" class="navbar-text hover:text-gray-500 transition duration-200">Blog</a>
+        <a href="#contact" class="navbar-text hover:text-gray-500 transition duration-200">Contact Us</a>
+      </div>
+      <!-- Menu Mobile -->
+      <div class="md:hidden">
+        <button id="menu-toggle" class="focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hamburger-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Dropdown Menu -->
+    <ul id="menu" class="md:hidden hidden flex-col space-y-2 mt-4 bg-gray-800 rounded-md shadow-lg p-4">
+      <li><a href="#about" class="block py-2 text-white hover:bg-gray-700 transition rounded">About Us</a></li>
+      <li><a href="#testimonials" class="block py-2 text-white hover:bg-gray-700 transition rounded">Testimonials</a></li>
+      <li><a href="#faq" class="block py-2 text-white hover:bg-gray-700 transition rounded">FAQ</a></li>
+      <li><a href="#gallery" class="block py-2 text-white hover:bg-gray-700 transition rounded">Gallery</a></li>
+      <li><a href="#blog" class="block py-2 text-white hover:bg-gray-700 transition rounded">Blog</a></li>
+      <li><a href="#contact" class="block py-2 text-white hover:bg-gray-700 transition rounded">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- JavaScript -->
+  <script>
+    const navbar = document.getElementById('navbar');
+    const navbarTexts = document.querySelectorAll('.navbar-text');
+    const hamburgerIcon = document.querySelector('.hamburger-icon');
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', function () {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (scrollTop > 50) {
+        navbar.style.backgroundColor = 'rgba(31, 41, 55, 0.9)';
+        navbar.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+        navbar.style.borderBottom = '2px solid rgba(255, 255, 255, 0.5)';
+        navbar.style.padding = '10px 0';
+        navbarTexts.forEach(text => text.classList.add('scrolled'));
+        hamburgerIcon.classList.add('scrolled');
+      } else {
+        navbar.style.backgroundColor = 'transparent';
+        navbar.style.boxShadow = 'none';
+        navbar.style.borderBottom = 'none';
+        navbar.style.padding = '20px 0';
+        navbarTexts.forEach(text => text.classList.remove('scrolled'));
+        hamburgerIcon.classList.remove('scrolled');
+      }
+      lastScrollTop = scrollTop;
+    });
+
+    // Smooth scrolling for anchor links
+    const navbarLinks = document.querySelectorAll('a[href^="#"]');
+    navbarLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80, // Offset for the navbar height
+            behavior: 'smooth',
+          });
+        }
+      });
+    });
+
+    // Toggle mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+
+</html>
+
+<!-- Hero Section -->
+<section id="home" class="bg-cover bg-center h-screen relative mt-16" style="background-image: url('https://files.catbox.moe/v9d170.png');">
+  <!-- Overlay Gelap -->
+  <div class="absolute inset-0 bg-black opacity-50"></div>
+
+  <!-- Konten Utama -->
+  <div class="container mx-auto h-full flex items-center justify-center text-center relative text-white px-6">
+    <div>
+      <!-- Judul -->
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight animate__animated animate__fadeIn">
+        Jelajahi Keindahan Sumatera
+      </h1>
+
+      <!-- Deskripsi -->
+      <p class="text-lg sm:text-xl mb-8 max-w-2xl mx-auto bg-white/10 px-6 py-4 rounded-lg shadow-md backdrop-blur-md animate__animated animate__fadeIn animate__delay-1s">
+        Temukan budaya yang kaya, pemandangan yang memukau, dan warisan Sumatera yang abadi. Mulailah perjalanan Anda hari ini dan buat kenangan tak terlupakan.
+      </p>
+
+      <!-- Tombol -->
+      <a href="#about" class="bg-gradient-to-r from-blue-600 via-teal-500 to-green-400 
+        text-white px-10 py-4 rounded-full shadow-lg 
+        hover:shadow-2xl hover:scale-105 
+        transform transition-all duration-300 ease-out 
+        inline-block animate__animated animate__fadeIn animate__delay-2s">
+        More
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<!-- About Sumatra Section -->
+<section id="about" class="min-h-screen bg-gray-100 p-10">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-8">Tentang Sumatera</h2>
+    <p class="text-lg max-w-2xl mx-auto mb-12">Sumatera, pulau yang memikat dengan keanekaragaman alam, budaya, dan sejarahnya. Dari pegunungan yang megah, danau yang indah, hingga kuliner khas yang menggugah selera, Sumatera menawarkan pengalaman yang tiada duanya.</p>
+    <div class="flex flex-wrap justify-center gap-8">
+      <div>
+        <i class="fas fa-tree text-green-500 text-4xl mb-4"></i>
+        <h3 class="text-xl font-semibold">Keindahan Alam yang Luar Biasa</h3>
+      </div>
+      <div>
+        <i class="fas fa-monument text-orange-500 text-4xl mb-4"></i>
+        <h3 class="text-xl font-semibold">Warisan Sejarah yang Kaya</h3>
+      </div>
+      <div>
+        <i class="fas fa-drumstick-bite text-red-500 text-4xl mb-4"></i>
+        <h3 class="text-xl font-semibold">Kuliner Khas Nusantara</h3>
+      </div>
+      <div>
+        <i class="fas fa-hand-holding-heart text-blue-500 text-4xl mb-4"></i>
+        <h3 class="text-xl font-semibold">Kerajinan & Tradisi yang Hidup</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Detail Sumatera -->
+<section id="detail-sumatera" class="py-16 bg-gray-50">
+  <div class="container mx-auto px-6 md:px-12 lg:px-20">
+    <div class="text-center mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Detail Sumatera</h2>
+      <p class="text-gray-600 mt-2">Informasi singkat tentang Sumatera: luas, jumlah provinsi, tempat wisata, dan populasi.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Luas Sumatera -->
+      <div class="text-center bg-white p-6 rounded-lg shadow">
+        <div class="text-green-600 text-4xl mb-4">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-800">Luas Wilayah</h3>
+        <p class="mt-2 text-gray-600">473,481 km²</p>
+      </div>
+      <!-- Provinsi di Sumatera -->
+      <div class="text-center bg-white p-6 rounded-lg shadow">
+        <div class="text-green-600 text-4xl mb-4">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-800">Provinsi</h3>
+        <p class="mt-2 text-gray-600">10 Provinsi</p>
+      </div>
+      <!-- Tempat Wisata -->
+      <div class="text-center bg-white p-6 rounded-lg shadow">
+        <div class="text-green-600 text-4xl mb-4">
+          <i class="fas fa-tree"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-800">Tempat Wisata</h3>
+        <p class="mt-2 text-gray-600">900+ Destinasi</p>
+      </div>
+      <!-- Jumlah Penduduk -->
+      <div class="text-center bg-white p-6 rounded-lg shadow">
+        <div class="text-green-600 text-4xl mb-4">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-800">Jumlah Penduduk</h3>
+        <p class="mt-2 text-gray-600">59 Juta Jiwa</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-6 md:px-12 lg:px-20">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Provinsi di Sumatera</h2>
+      <p class="text-lg text-gray-600">Berikut informasi singkat tentang provinsi-provinsi di Sumatera.</p>
+    </div>
+
+    <div class="space-y-12">
+      <!-- Jambi -->
+      <div class="flex flex-col md:flex-row items-center md:items-start">
+        <div class="flex-shrink-0 w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center mb-4 md:mb-0 md:mr-8">
+          <img src="https://files.catbox.moe/8bsc1b.png" alt="Logo Jambi" class="w-20 h-20">
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold text-gray-800">Jambi</h3>
+          <ul class="mt-4 space-y-2 text-gray-600">
+            <li class="flex items-center">
+              <i class="fas fa-users text-green-600 mr-2"></i>Penduduk: 3.5 juta jiwa
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-map-marker-alt text-green-600 mr-2"></i>Wisata: 120 tempat
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-expand text-green-600 mr-2"></i>Luas: 50,058 km²
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-map-pin text-green-600 mr-2"></i>Koordinat: 1.6103° S, 103.6131° E
+            </li>
+          </ul>
+          <a href="https://jambi.sumateraisland.org/" target="_blank" class="inline-block mt-4 px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700">Kunjungi Website Jambi</a>
+        </div>
+      </div>
+
+      <!-- Riau -->
+      <div class="flex flex-col md:flex-row-reverse items-center md:items-start">
+        <div class="flex-shrink-0 w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center mb-4 md:mb-0 md:ml-8">
+          <img src="https://files.catbox.moe/ke89cw.png" alt="Logo Riau" class="w-20 h-20">
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold text-gray-800">Riau</h3>
+          <ul class="mt-4 space-y-2 text-gray-600">
+            <li class="flex items-center">
+              <i class="fas fa-users text-green-600 mr-2"></i>Penduduk: 6.5 juta jiwa
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-map-marker-alt text-green-600 mr-2"></i>Wisata: 200 tempat
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-expand text-green-600 mr-2"></i>Luas: 87,023 km²
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-map-pin text-green-600 mr-2"></i>Koordinat: 0.2933° N, 101.7068° E
+            </li>
+          </ul>
+          <a href="https://riau.sumateraisland.org/" target="_blank" class="inline-block mt-4 px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700">Kunjungi Website Riau</a>
+        </div>
+      </div>
+
+      <!-- Medan -->
+      <div class="flex flex-col md:flex-row items-center md:items-start">
+        <div class="flex-shrink-0 w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center mb-4 md:mb-0 md:mr-8">
+          <img src="https://files.catbox.moe/zrgnsf.png" alt="Logo Medan" class="w-20 h-20">
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold text-gray-800">Medan</h3>
+          <ul class="mt-4 space-y-2 text-gray-600">
+            <li class="flex items-center">
+              <i class="fas fa-users text-green-600 mr-2"></i>Penduduk: 2.5 juta jiwa
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-map-marker-alt text-green-600 mr-2"></i>Wisata: 110 tempat
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-expand text-green-600 mr-2"></i>Luas: 265 km²
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-map-pin text-green-600 mr-2"></i>Koordinat: 3.5952° N, 98.6722° E
+            </li>
+          </ul>
+          <a href="https://medan.sumateraisland.org/" target="_blank" class="inline-block mt-4 px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700">Kunjungi Website Medan</a>
+        </div>
+      </div>
+
+      <!-- Padang -->
+      <div class="flex flex-col md:flex-row-reverse items-center md:items-start">
+        <div class="flex-shrink-0 w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center mb-4 md:mb-0 md:ml-8">
+          <img src="https://files.catbox.moe/g50fm8.png" alt="Logo Padang" class="w-20 h-20">
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold text-gray-800">Padang</h3>
+          <ul class="mt-4 space-y-2 text-gray-600">
+            <li class="flex items-center">
+              <i class="fas fa-users text-green-600 mr-2"></i>Penduduk: 4.5 juta jiwa
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-map-marker-alt text-green-600 mr-2"></i>Wisata: 130 tempat
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-expand text-green-600 mr-2"></i>Luas: 42,297 km²
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-map-pin text-green-600 mr-2"></i>Koordinat: 0.9492° S, 100.3543° E
+            </li>
+          </ul>
+          <a href="https://padang.sumateraisland.org/" target="_blank" class="inline-block mt-4 px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700">Kunjungi Website Padang</a>
+        </div>
+      </div>
+
+      <!-- Palembang -->
+      <div class="flex flex-col md:flex-row items-center md:items-start">
+        <div class="flex-shrink-0 w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center mb-4 md:mb-0 md:mr-8">
+          <img src="https://files.catbox.moe/4rkktp.png" alt="Logo Palembang" class="w-20 h-20">
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold text-gray-800">Palembang</h3>
+          <ul class="mt-4 space-y-2 text-gray-600">
+            <li class="flex items-center">
+              <i class="fas fa-users text-green-600 mr-2"></i>Penduduk: 1.8 juta jiwa
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-map-marker-alt text-green-600 mr-2"></i>Wisata: 140 tempat
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-expand text-green-600 mr-2"></i>Luas: 400.61 km²
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-map-pin text-green-600 mr-2"></i>Koordinat: 2.9909° S, 104.7563° E
+            </li>
+          </ul>
+          <a href="https://palembang.sumateraisland.org/" target="_blank" class="inline-block mt-4 px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700">Kunjungi Website Palembang</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Include Font Awesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="min-h-screen bg-gray-50 p-10">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">Apa Kata Pengunjung</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="p-8 bg-gray-100 rounded-lg shadow">
+        <p class="mb-4">"Sumatera Wonderful membawa perjalanan saya ke level berikutnya! Alam yang luar biasa dan layanan yang memuaskan."</p>
+        <h3 class="font-bold">- Amelia</h3>
+      </div>
+      <div class="p-8 bg-gray-100 rounded-lg shadow">
+        <p class="mb-4">"Mengalami Sumatera dengan Sumatera Wonderful sangat magis. Destinasi yang harus dikunjungi!"</p>
+        <h3 class="font-bold">- Damar</h3>
+      </div>
+      <div class="p-8 bg-gray-100 rounded-lg shadow">
+        <p class="mb-4">"Dari Danau Toba hingga kuliner lokal, setiap momen tak terlupakan. Terima kasih, SumateraIsland ID!"</p>
+        <h3 class="font-bold">- Sophia</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="min-h-screen bg-white p-10">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">Pertanyaan yang Sering Diajukan</h2>
+    <div class="space-y-4">
+      <details class="p-4 bg-white rounded shadow">
+        <summary class="cursor-pointer font-semibold">Apa yang membuat Sumatera istimewa?</summary>
+        <p class="mt-2 text-gray-600">Sumatera adalah pulau dengan keindahan alam luar biasa, mulai dari Danau Toba yang megah, Gunung Kerinci, hingga Pantai Lampuuk yang menakjubkan, serta budaya yang kaya dari berbagai suku.</p>
+      </details>
+      <details class="p-4 bg-white rounded shadow">
+        <summary class="cursor-pointer font-semibold">Apa saja destinasi populer di Sumatera?</summary>
+        <p class="mt-2 text-gray-600">Destinasi populer meliputi Danau Toba di Sumatera Utara, Bukittinggi di Sumatera Barat, Taman Nasional Gunung Leuser di Aceh, dan banyak lagi.</p>
+      </details>
+      <details class="p-4 bg-white rounded shadow">
+        <summary class="cursor-pointer font-semibold">Bagaimana cara mencapai Sumatera?</summary>
+        <p class="mt-2 text-gray-600">Sumatera dapat dicapai melalui penerbangan ke berbagai bandara internasional seperti Bandara Kualanamu di Medan atau Bandara Sultan Mahmud Badaruddin II di Palembang.</p>
+      </details>
+      <details class="p-4 bg-white rounded shadow">
+        <summary class="cursor-pointer font-semibold">Kapan waktu terbaik untuk mengunjungi Sumatera?</summary>
+        <p class="mt-2 text-gray-600">Waktu terbaik untuk mengunjungi Sumatera adalah selama musim kemarau antara bulan April hingga September, saat cuaca lebih cerah untuk menjelajahi alam dan budaya lokal.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- Call to Action Section -->
+<section class="py-16 bg-gradient-to-r from-blue-600 via-teal-500 to-green-400 text-white">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-6">Temukan Keajaiban Sumatera</h2>
+    <p class="text-lg mb-8">Bergabunglah dengan banyak wisatawan dalam menjelajahi budaya yang kaya, keindahan alam, dan kehidupan yang vibrant di Sumatera.</p>
+    <a href="https://www.traveloka.com/id-id/tiket-pesawat?id=760242327765424232&adloc=id-id&kw=&gmt=&gn=g&gd=c&gap=&pc=0&cp=ID_FL_SM_AU_AL_Google_DSA_ID_GEN_GEN&aid=168168952559&gid=9120656&utm_id=XG6jKSTp&ad_id=717335962953&target_id=dsa-2302655168321&click_id=CjwKCAiAp4O8BhAkEiwAqv2UqIoi_yCJ8yQ922H4HmaAi4LswJDNg-tMBrSJKwv9KE5edoWCRM6uuBoCVdQQAvD_BwE&gad_source=1&gclid=CjwKCAiAp4O8BhAkEiwAqv2UqIoi_yCJ8yQ922H4HmaAi4LswJDNg-tMBrSJKwv9KE5edoWCRM6uuBoCVdQQAvD_BwE" class="btn-primary text-white px-8 py-4 rounded-full shadow-lg hover:opacity-90">Rencanakan Perjalanan Anda</a>
+  </div>
+</section>
+
+
+  <!-- Gallery Section -->
+ <section id="gallery" class="min-h-screen bg-gray-50 p-10">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-12">Property Gallery</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div class="gallery-item">
+          <img src="https://files.catbox.moe/6jkxim.jpg" alt="Property 1" class="w-full h-56 object-cover rounded-lg shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg grayscale hover:grayscale-0">
+        </div>
+        <div class="gallery-item">
+          <img src="https://files.catbox.moe/32bc6y.jpg" alt="Property 2" class="w-full h-56 object-cover rounded-lg shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg grayscale hover:grayscale-0">
+        </div>
+        <div class="gallery-item">
+          <img src="https://files.catbox.moe/utufy2.jpg" alt="Property 3" class="w-full h-56 object-cover rounded-lg shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg grayscale hover:grayscale-0">
+        </div>
+        <div class="gallery-item">
+          <img src="https://files.catbox.moe/14s8j0.jpg" alt="Property 4" class="w-full h-56 object-cover rounded-lg shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg grayscale hover:grayscale-0">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery-item img {
+      transition: filter 0.3s ease-in-out;
+      filter: grayscale(100%); /* Initially grayscale */
+    }
+
+    /* Make grayscale revert to normal when hovering */
+    .gallery-item img:hover {
+      filter: grayscale(0%); /* Remove grayscale on hover */
+    }
+
+    /* Fade-in animation for gallery items */
+    .gallery-item img {
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    .gallery-item:nth-child(1) img {
+      animation-delay: 0.1s;
+    }
+
+    .gallery-item:nth-child(2) img {
+      animation-delay: 0.2s;
+    }
+
+    .gallery-item:nth-child(3) img {
+      animation-delay: 0.3s;
+    }
+
+    .gallery-item:nth-child(4) img {
+      animation-delay: 0.4s;
+    }
+
+    /* Keyframe for fade-in effect */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+
+<!-- Blog Section -->
+<section id="blog" class="min-h-screen bg-gray-50 p-10">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-8">Latest Blog Posts</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+      <div class="p-6 bg-white rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold mb-4">Discovering Hidden Gems in Sumatra</h3>
+        <p class="text-gray-600 mb-4">Explore lesser-known attractions in Sumatra that offer breathtaking views and unique experiences.</p>
+        <a href="https://www.tripadvisor.com/Attractions-g294231-Activities-zft12156-Sumatra.html" class="text-blue-500">Read More</a>
+      </div>
+      <div class="p-6 bg-white rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold mb-4">Top Culinary Experiences in Sumatra</h3>
+        <p class="text-gray-600 mb-4">Dive into Sumatra's rich culinary scene and savor traditional dishes you can't miss.</p>
+        <a href="https://www.tripadvisor.co.uk/Restaurants-g294231-Sumatra.html" class="text-blue-500">Read More</a>
+      </div>
+      <div class="p-6 bg-white rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold mb-4">A Guide to Cultural Festivals in Sumatra</h3>
+        <p class="text-gray-600 mb-4">Learn about vibrant cultural events and festivals in Sumatra that showcase its rich heritage.</p>
+        <a href="https://global.unair.ac.id/2024/08/13/experience-the-cultural-vibrancy-of-sumatras-festivals/" class="text-blue-500">Read More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Us Section -->
+<section class="py-16 bg-gray-50 p-10">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-8">About Sumatra Wonderful</h2>
+    <p class="text-lg text-gray-700 mb-6">
+      Sumatra Wonderful is your ultimate travel partner in exploring the enchanting island of Sumatra. From cultural tours to nature escapes, we ensure your journey is unforgettable.
+    </p>
+    <div class="flex justify-center space-x-4">
+      <a href="servis.html" class="btn-primary text-white px-6 py-3 rounded-lg shadow-lg bg-blue-500 hover:bg-blue-600">Our Services</a>
+      <a href="#contact" class="btn-secondary text-blue-500 px-6 py-3 rounded-lg shadow-lg bg-gray-100 hover:bg-gray-200">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Contact Us Section -->
+<section id="contact" class="min-h-screen bg-gray-50 p-10">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-4xl font-semibold text-gray-800 mb-8">Contact Us</h2>
+    <form id="contact-form" method="POST" class="max-w-lg mx-auto space-y-6 bg-white p-8 rounded-lg shadow-lg" onsubmit="return validateCaptcha()">
+      <input type="text" id="name" name="name" placeholder="Your Name" class="w-full p-4 bg-gray-100 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+      <input type="email" id="email" name="email" placeholder="Your Email" class="w-full p-4 bg-gray-100 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+      <textarea id="message" name="message" placeholder="Your Message" rows="4" class="w-full p-4 bg-gray-100 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+
+      <!-- Submit Button -->
+      <button type="submit" class="w-full py-4 text-white rounded-full shadow-lg bg-blue-600 hover:bg-blue-700 transition duration-300">
+        Send Message
+      </button>
+    </form>
+  </div>
+</section>
+
+
+<style>
+  /* Custom Styles */
+  .captcha-container {
+    margin-top: 20px;
+  }
+
+  .captcha-image {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 2rem;
+    color: #333;
+  }
+
+  /* Style for countdown timer */
+  #timer {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  /* Hover effects for the captcha and buttons */
+  .captcha-container button:hover {
+    background-color: #4CAF50;
+    transform: scale(1.1);
+  }
+
+  /* Button style */
+  .btn-primary {
+    background-color: #4CAF50;
+    border-radius: 50px;
+    padding: 10px 20px;
+  }
+
+  /* SweetAlert styling */
+  .swal-button {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 640px) {
+    .captcha-image {
+      font-size: 1.5rem;
+    }
+
+    .btn-primary {
+      padding: 16px 0;
+    }
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<script>
+    new Vue({
+      new Vue({
+          el: "#kontak",
+          data: {
+              name: '',
+              email: '',
+              message: '',
+              captchaInput: '',
+          },
+          mounted() {
+              emailjs.init("kvM256ynxweeFAv-F"); // Ganti dengan ID Anda dari EmailJS
+          },
+          methods: {
+              sendEmail() {
+                  // Cek apakah semua kolom sudah diisi dan captcha valid
+                  if (!this.name || !this.email || !this.message || !this.captchaInput) {
+                      this.showMessage("❌ Please fill in all fields.", "#f44336");
+                      return;
+                  }
+
+                  const params = {
+                      from_name: this.name,
+                      to_name: "Admin Jogja",  // Ganti dengan nama penerima
+                      message: this.message,
+                      from_email: this.email,
+                  };
+
+                  emailjs.send("service_ouim9gl", "template_rx44qho", params)
+                      .then(response => {
+                          this.showMessage("✔️ Email sent successfully!", "#4CAF50");
+                      })
+                      .catch(error => {
+                          this.showMessage("❌ Failed to send email: " + error.text, "#f44336");
+                      });
+              },
+
+              showMessage(message, bgColor) {
+                  const messageDiv = document.createElement("div");
+                  messageDiv.style.position = "fixed";
+                  messageDiv.style.top = "20px";
+                  messageDiv.style.left = "50%";
+                  messageDiv.style.transform = "translateX(-50%)";
+                  messageDiv.style.padding = "20px";
+                  messageDiv.style.backgroundColor = bgColor;
+                  messageDiv.style.color = "white";
+                  messageDiv.style.fontSize = "16px";
+                  messageDiv.style.borderRadius = "5px";
+                  messageDiv.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+                  messageDiv.style.zIndex = "9999";
+                  messageDiv.innerHTML = message;
+
+                  document.body.appendChild(messageDiv);
+
+                  setTimeout(() => {
+                      messageDiv.style.opacity = "0";
+                      setTimeout(() => document.body.removeChild(messageDiv), 500);
+                  }, 3000);
+              }
+          }
+      });
+
+</script>
+
+
+ <!-- Footer -->
+ <footer class="bg-gradient-to-r from-blue-800 to-purple-900 text-white py-16">
+   <div class="container mx-auto px-6">
+     <!-- Footer Content -->
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+       <!-- Column 1: About -->
+       <div>
+         <h3 class="text-2xl font-semibold mb-4">About Us</h3>
+         <p class="text-gray-400">Website ini di buat untuk mengenalkan daerah sumatera terkhusus untuk belajar siswa</p>
+       </div>
+
+       <!-- Column 2: Quick Links -->
+       <div>
+         <h3 class="text-2xl font-semibold mb-4">Quick Links</h3>
+         <ul class="space-y-2 text-gray-400">
+           <li><a href="#" class="hover:text-yellow-400">Home</a></li>
+           <li><a href="#" class="hover:text-yellow-400">Services</a></li>
+           <li><a href="#" class="hover:text-yellow-400">About</a></li>
+           <li><a href="#" class="hover:text-yellow-400">Contact</a></li>
+         </ul>
+       </div>
+
+       <!-- Column 3: Contact -->
+       <div>
+         <h3 class="text-2xl font-semibold mb-4">Contact Us</h3>
+         <p class="text-gray-400">Email: info@sumateraisland.org</p>
+         <p class="text-gray-400">Phone: (298) 4249-3439</p>
+       </div>
+     </div>
+
+     <!-- Social Media Links -->
+     <div class="flex justify-center mt-8 space-x-6">
+       <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-facebook"></i></a>
+       <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+       <a href="#" class="text-2xl hover:text-pink-400"><i class="fab fa-instagram"></i></a>
+       <a href="#" class="text-2xl hover:text-red-400"><i class="fab fa-youtube"></i></a>
+     </div>
+
+     <!-- Copyright -->
+     <div class="text-center mt-8 text-gray-400">
+       <p>&copy; 2024  Riau SumateraIsland. All rights reserved.</p>
+     </div>
+   </div>
+ </footer>
+
+ <script>
+   function onSubmit(token) {
+     document.getElementById("demo-form").submit();
+   }
+ </script>
+
+<script>
+  AOS.init();
+</script>
+
+</body>
+</html>
